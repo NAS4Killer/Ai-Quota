@@ -1,7 +1,7 @@
 import { PLUGIN_VERSION } from './version.js';
 
 export const GITHUB_REPOSITORY_URL = 'https://github.com/NAS4Killer/Ai-Quota';
-export const GITHUB_VERSION_URL = 'https://api.github.com/repos/NAS4Killer/Ai-Quota/contents/de.ai-quota.sdPlugin/manifest.json';
+export const GITHUB_VERSION_URL = 'https://api.github.com/repos/NAS4Killer/Ai-Quota/contents/Repository/de.ai-quota.sdPlugin/manifest.json';
 
 // Stream Deck uses four numeric version components, rather than semver strings.
 export function compareVersions(left, right) {

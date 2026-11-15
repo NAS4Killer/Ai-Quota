@@ -14,6 +14,15 @@ const require = createRequire(import.meta.url);
 const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
 const manifestResponse = Version => ({ ok: true, json: async () => ({ UUID: 'de.ai-quota', Version }) });
 
+test('update URL resolves to the actual manifest in the upload directory layout', async () => {
+  const contentsPath = new URL(GITHUB_VERSION_URL).pathname.match(/^\/repos\/[^/]+\/[^/]+\/contents\/(.+)$/);
+  assert.ok(contentsPath, 'update URL must address a GitHub repository file');
+  const uploadRoot = new URL('../../', import.meta.url);
+  const manifest = JSON.parse(await readFile(new URL(contentsPath[1], uploadRoot), 'utf8'));
+  assert.equal(manifest.UUID, 'de.ai-quota');
+  assert.equal(manifest.Version, PLUGIN_VERSION);
+});
+
 test('four-component versions compare numerically and reject invalid GitHub data', () => {
   for (const [left, right, result] of [
     ['0.0.2.10', '0.0.2.9', 1], ['0.0.10.0', '0.0.2.99', 1],

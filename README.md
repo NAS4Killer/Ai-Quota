@@ -42,8 +42,7 @@ kopiert keine privaten Anmelde- oder Kontodateien in seine Einstellungen.
 
 ## Installation und Bedienung
 
-Das Paket `de.ai-quota.streamDeckPlugin` aus den
-[GitHub-Releases](https://github.com/NAS4Killer/Ai-Quota/releases) öffnen und
+Das Paket [`de.ai-quota.streamDeckPlugin`](Release/de.ai-quota.streamDeckPlugin) öffnen und
 die Installation in Stream Deck bestätigen. Anschließend die Aktion **chatGPT**
 oder **Claude** auf eine Taste ziehen und die Anzeige nach Wunsch einstellen.
 
@@ -56,7 +55,7 @@ pro Pluginstart; eine erstmalige spätere Aktivierung löst sie ebenfalls aus.
 
 ## Aus dem Quellcode bauen
 
-Benötigt werden Node.js ab Version 20 und npm. Im Projektordner ausführen:
+Benötigt werden Node.js ab Version 20 und npm. Im Unterordner `Repository` ausführen:
 
 ```powershell
 npm ci
@@ -74,17 +73,17 @@ des Quellcodebestands und werden mit diesen Befehlen erstellt.
 
 | Datei | Aufgabe |
 | --- | --- |
-| `src/plugin.js` | Stream-Deck-Protokoll, Aktionen, Einstellungen und Aktualisierung |
-| `src/quota.js` | ChatGPT-Desktop-Anbindung und Kontingentdaten |
-| `src/claude-connection.js`, `src/claude.js` | Claude-Code-Verbindung, Anmeldung und Kontingentdaten |
-| `src/render.js` | Werkseinstellungen, SVG-Darstellung und Resettexte |
-| `src/update.js` | GitHub-Versionsabfrage und numerischer Versionsvergleich |
-| `src/version.js` | Laufzeitversion |
-| `de.ai-quota.sdPlugin/ui/settings.html` | Einstellungsoberfläche |
-| `de.ai-quota.sdPlugin/manifest.json` | Plugin-Metadaten und Aktionen |
-| `tests/` | Automatisierte Funktionsprüfungen |
+| `Repository/src/plugin.js` | Stream-Deck-Protokoll, Aktionen, Einstellungen und Aktualisierung |
+| `Repository/src/quota.js` | ChatGPT-Desktop-Anbindung und Kontingentdaten |
+| `Repository/src/claude-connection.js`, `Repository/src/claude.js` | Claude-Code-Verbindung, Anmeldung und Kontingentdaten |
+| `Repository/src/render.js` | Werkseinstellungen, SVG-Darstellung und Resettexte |
+| `Repository/src/update.js` | GitHub-Versionsabfrage und numerischer Versionsvergleich |
+| `Repository/src/version.js` | Laufzeitversion |
+| `Repository/de.ai-quota.sdPlugin/ui/settings.html` | Einstellungsoberfläche |
+| `Repository/de.ai-quota.sdPlugin/manifest.json` | Plugin-Metadaten und Aktionen |
+| `Repository/tests/` | Automatisierte Funktionsprüfungen |
 
-Rendereränderungen werden in `src/render.js` vorgenommen. Der Build aktualisiert
+Rendereränderungen werden in `Repository/src/render.js` vorgenommen. Der Build aktualisiert
 den gekennzeichneten Rendererblock der Einstellungsoberfläche automatisch.
 Die GitHub-Prüfung liest ausschließlich die Versionsnummer aus dem Plugin-Manifest
 des Standardzweigs und verwendet keine Konto-Zugangsdaten.

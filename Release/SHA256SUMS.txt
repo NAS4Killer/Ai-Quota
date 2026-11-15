@@ -1,0 +1,1 @@
+b78dfb8b4af1ce133eac89c8ebee82b641ffdb2c5e4cd0c42ff19b91e5525a2b  de.ai-quota.streamDeckPlugin

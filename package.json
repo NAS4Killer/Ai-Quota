@@ -1,0 +1,25 @@
+{
+  "name": "ai-quota",
+  "version": "0.0.2.1",
+  "private": true,
+  "description": "Anpassbare ChatGPT- und Claude-Kontingentanzeige für Stream Deck",
+  "scripts": {
+    "build": "node --input-type=module -e \"import {build} from 'esbuild'; import {readFileSync,writeFileSync,cpSync,rmSync,readdirSync} from 'node:fs'; import {resolve,relative,sep,isAbsolute} from 'node:path'; const pluginRoot=resolve('de.ai-quota.sdPlugin'); const legacy=resolve(pluginRoot,'bin','codex'); const within=relative(pluginRoot,legacy); if(!within||within.startsWith('..'+sep)||isAbsolute(within))throw Error('Invalid generated runtime path'); rmSync(legacy,{recursive:true,force:true}); cpSync('node_modules/@anthropic-ai/claude-code-win32-x64','de.ai-quota.sdPlugin/bin/claude',{recursive:true}); cpSync('node_modules/@anthropic-ai/claude-agent-sdk','de.ai-quota.sdPlugin/bin/claude-sdk',{recursive:true}); for(const entry of readdirSync(resolve(pluginRoot,'bin','claude-sdk'),{withFileTypes:true})){if(entry.isFile()&&entry.name.endsWith('.d.ts'))rmSync(resolve(pluginRoot,'bin','claude-sdk',entry.name));} await build({entryPoints:['src/plugin.js'],bundle:true,platform:'node',target:'node20',format:'cjs',outfile:'de.ai-quota.sdPlugin/bin/plugin.js'}); const r=await build({entryPoints:['src/render.js'],bundle:true,platform:'browser',format:'iife',globalName:'AiQuotaRender',write:false}); const p='de.ai-quota.sdPlugin/ui/settings.html'; const h=readFileSync(p,'utf8'); const a='/* RENDERER_START */',b='/* RENDERER_END */'; const start=h.indexOf(a),end=h.indexOf(b); if(start<0||end<start)throw Error('Renderer marker missing'); writeFileSync(p,h.slice(0,start+a.length)+r.outputFiles[0].text+h.slice(end),'utf8');\"",
+    "test": "node --experimental-vm-modules --test tests/*.test.mjs"
+  },
+  "dependencies": {
+    "ws": "^8.18.0"
+  },
+  "devDependencies": {
+    "@anthropic-ai/claude-agent-sdk": "0.3.276",
+    "@anthropic-ai/claude-code-win32-x64": "2.1.299",
+    "@elgato/cli": "^1.10.2",
+    "@resvg/resvg-js": "^2.6.2",
+    "esbuild": "^0.25.0",
+    "jsdom": "^29.1.1"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "author": "NAS4Killer"
+}

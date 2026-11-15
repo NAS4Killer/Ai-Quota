@@ -1,0 +1,63 @@
+{
+  "$schema": "https://schemas.elgato.com/streamdeck/plugins/manifest.json",
+  "Name": "Ai-Quota",
+  "Category": "Ai-Quota",
+  "Author": "NAS4Killer",
+  "Description": "Anpassbare Kontingentanzeige für ChatGPT Work / Codex und Claude.",
+  "Version": "0.0.2.1",
+  "UUID": "de.ai-quota",
+  "Icon": "imgs/plugin",
+  "CodePath": "bin/plugin.js",
+  "SDKVersion": 2,
+  "Software": {
+    "MinimumVersion": "6.6"
+  },
+  "OS": [
+    {
+      "Platform": "windows",
+      "MinimumVersion": "10"
+    }
+  ],
+  "Nodejs": {
+    "Version": "20"
+  },
+  "Actions": [
+    {
+      "UUID": "de.ai-quota.quota",
+      "Name": "chatGPT",
+      "Icon": "imgs/plugin",
+      "Tooltip": "ChatGPT-Work-Kontingent anzeigen; Tastendruck aktualisiert oder öffnet GitHub bei sichtbarem Updatepunkt.",
+      "Controllers": [
+        "Keypad"
+      ],
+      "PropertyInspectorPath": "ui/settings.html",
+      "UserTitleEnabled": false,
+      "SupportedInMultiActions": false,
+      "States": [
+        {
+          "Image": "imgs/plugin",
+          "ShowTitle": false
+        }
+      ]
+    },
+    {
+      "UUID": "de.ai-quota.claude",
+      "Name": "Claude",
+      "Icon": "imgs/plugin",
+      "Tooltip": "Claude-Kontingent anzeigen; Tastendruck aktualisiert oder öffnet GitHub bei sichtbarem Updatepunkt.",
+      "Controllers": [
+        "Keypad"
+      ],
+      "PropertyInspectorPath": "ui/settings.html",
+      "UserTitleEnabled": false,
+      "SupportedInMultiActions": false,
+      "States": [
+        {
+          "Image": "imgs/plugin",
+          "ShowTitle": false
+        }
+      ]
+    }
+  ],
+  "CategoryIcon": "imgs/plugin"
+}

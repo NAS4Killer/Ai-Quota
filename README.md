@@ -6,6 +6,8 @@ Ai-Quota zeigt verfügbare ChatGPT-Work-/Codex- und Claude-Kontingente auf
 Stream-Deck-Tasten an. Für ChatGPT und Claude gibt es jeweils eine eigene
 Aktion mit getrennten Einstellungen pro Taste.
 
+![Darstellungsvarianten von Ai-Quota](Bilder/Varianten_ChatGPT.png)
+
 ## Funktionen
 
 - 5-Stunden- und Wochenkontingente anzeigen, soweit vom Konto bereitgestellt.
@@ -86,3 +88,7 @@ Rendereränderungen werden in `src/render.js` vorgenommen. Der Build aktualisier
 den gekennzeichneten Rendererblock der Einstellungsoberfläche automatisch.
 Die GitHub-Prüfung liest ausschließlich die Versionsnummer aus dem Plugin-Manifest
 des Standardzweigs und verwendet keine Konto-Zugangsdaten.
+
+## Einstellungsmöglichkeiten
+
+![Einstellungsmöglichkeiten von Ai-Quota](Bilder/Einstellungen.png)

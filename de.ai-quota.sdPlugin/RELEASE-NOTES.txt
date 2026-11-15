@@ -1,0 +1,6 @@
+Ai-Quota 0.0.2.1
+
+- Beim Pluginstart wird geprüft, ob auf GitHub eine neuere committete Version verfügbar ist.
+- Ein roter Punkt auf der ChatGPT- oder Claude-Taste weist auf eine neuere Version hin.
+- Bei sichtbarem roten Updatepunkt öffnet ein Tastendruck die GitHub-Seite des Plugins.
+- Die Updateinfo lässt sich für jede Taste ganz unten in den Einstellungen ein- und ausschalten; sie ist standardmäßig eingeschaltet.

@@ -4,13 +4,13 @@
   "Category": "Ai-Quota",
   "Author": "NAS4Killer",
   "Description": "Anpassbare Kontingentanzeige für ChatGPT Work / Codex und Claude.",
-  "Version": "0.0.2.1",
+  "Version": "0.0.2.2",
   "UUID": "de.ai-quota",
   "Icon": "imgs/plugin",
   "CodePath": "bin/plugin.js",
   "SDKVersion": 2,
   "Software": {
-    "MinimumVersion": "6.6"
+    "MinimumVersion": "7.1"
   },
   "OS": [
     {
@@ -19,7 +19,7 @@
     }
   ],
   "Nodejs": {
-    "Version": "20"
+    "Version": "24"
   },
   "Actions": [
     {

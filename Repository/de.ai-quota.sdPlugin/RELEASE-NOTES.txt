@@ -1,3 +1,8 @@
+Ai-Quota 0.0.2.2
+
+- Der Wechsel auf Node.js 24 behebt die Sicherheitslücke CVE-2026-109869 in der Laufzeit für die GitHub-Updateabfrage.
+- Ai-Quota benötigt jetzt Stream Deck 7.1 oder neuer.
+
 Ai-Quota 0.0.2.1
 
 - Beim Pluginstart wird geprüft, ob auf GitHub eine neuere committete Version verfügbar ist.

@@ -1,6 +1,6 @@
 # Ai-Quota
 
-Version **0.0.2.1** · Autor **NAS4Killer**
+Version **0.0.2.2** · Autor **NAS4Killer**
 
 Ai-Quota zeigt verfügbare ChatGPT-Work-/Codex- und Claude-Kontingente auf
 Stream-Deck-Tasten an. Für ChatGPT und Claude gibt es jeweils eine eigene
@@ -24,7 +24,7 @@ Aktion mit getrennten Einstellungen pro Taste.
 
 ## Voraussetzungen und Anmeldung
 
-Windows 10 oder neuer und Stream Deck 6.6 oder neuer.
+Windows 10 oder neuer und Stream Deck 7.1 oder neuer.
 
 **ChatGPT:** Das Plugin nutzt die vorhandene Anmeldung der installierten
 ChatGPT-Desktop-Laufzeit. Es werden die gemeinsamen Work-/Codex-Kontingente
@@ -55,7 +55,7 @@ pro Pluginstart; eine erstmalige spätere Aktivierung löst sie ebenfalls aus.
 
 ## Aus dem Quellcode bauen
 
-Benötigt werden Node.js ab Version 20 und npm. Im Unterordner `Repository` ausführen:
+Benötigt werden Node.js ab Version 24 und npm. Im Unterordner `Repository` ausführen:
 
 ```powershell
 npm ci

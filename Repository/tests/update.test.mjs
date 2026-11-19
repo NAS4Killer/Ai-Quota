@@ -12,6 +12,8 @@ import { normalizeSettings, renderKey } from '../src/render.js';
 
 const require = createRequire(import.meta.url);
 const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
+const [major, minor, patch, revision] = PLUGIN_VERSION.split('.').map(Number);
+const newerVersion = [major, minor, patch, revision + 1].join('.');
 const manifestResponse = Version => ({ ok: true, json: async () => ({ UUID: 'de.ai-quota', Version }) });
 
 test('update URL resolves to the actual manifest in the upload directory layout', async () => {
@@ -37,7 +39,7 @@ test('four-component versions compare numerically and reject invalid GitHub data
 test('startup check reads only the committed manifest and coalesces all callers', async () => {
   const calls = []; let changes = 0;
   const checker = new UpdateChecker({ onChange: () => changes++, fetchImpl: async (url, options) => {
-    calls.push({ url, options }); await wait(5); return manifestResponse('0.0.2.2');
+    calls.push({ url, options }); await wait(5); return manifestResponse(newerVersion);
   } });
   assert.deepEqual(await Promise.all([checker.check(), checker.check(), checker.check()]), [true, true, true]);
   assert.equal(await checker.check(), true); assert.equal(calls.length, 1); assert.equal(changes, 1);
@@ -131,7 +133,7 @@ test('bottom update checkbox persists for both actions without label or row togg
   }
 });
 
-const compiledPlugin = build({ entryPoints: ['src/plugin.js'], bundle: true, platform: 'node', target: 'node20', format: 'cjs', external: ['ws'], write: false, plugins: [{
+const compiledPlugin = build({ entryPoints: ['src/plugin.js'], bundle: true, platform: 'node', target: 'node24', format: 'cjs', external: ['ws'], write: false, plugins: [{
   name: 'mock-quota-clients', setup(builder) {
     builder.onResolve({ filter: /^\.\/(quota|claude)\.js$/ }, args => ({ path: args.path, namespace: 'mock-quota' }));
     builder.onLoad({ filter: /.*/, namespace: 'mock-quota' }, () => ({ contents: `
@@ -143,7 +145,7 @@ const compiledPlugin = build({ entryPoints: ['src/plugin.js'], bundle: true, pla
   }
 }] });
 
-async function pluginHarness({ enabled = true, version = '0.0.2.2', offline = false } = {}) {
+async function pluginHarness({ enabled = true, version = newerVersion, offline = false } = {}) {
   const messages = [], requests = []; let socket, tick; let now = Date.now();
   class FakeSocket extends EventEmitter { static OPEN = 1; readyState = 1; constructor() { super(); socket = this; } send(value) { messages.push(JSON.parse(value)); } close() { this.emit('close'); } }
   class Clock extends Date { static now() { return now; } }

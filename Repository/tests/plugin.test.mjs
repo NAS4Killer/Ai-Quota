@@ -167,7 +167,7 @@ test('bundled actions keep their settings and accounts separate through Claude l
     if(name==='node:fs/promises')return {...require(name),readFile:()=>assert.fail('Quota clients must not open credential files')};
     return require(name);
   }};
-  const compiled=await build({entryPoints:['src/plugin.js'],bundle:true,platform:'node',target:'node20',format:'cjs',external:['ws'],write:false});
+  const compiled=await build({entryPoints:['src/plugin.js'],bundle:true,platform:'node',target:'node24',format:'cjs',external:['ws'],write:false});
   const context=vm.createContext(sandbox);
   const sdkModule=new vm.SyntheticModule(['query'],function(){
     this.setExport('query',({options})=>{
